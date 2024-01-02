@@ -6,14 +6,14 @@
    overshell_main_panel
    OVERSHELL_LIST_FILE
    (enter
-      {sel_section.lst set_data (os_write os_mod os_trk os_spd)}
+      {sel_section.lst set_data (os_mod os_trk os_spd)}
       {title.lbl set text_token os_dxsettings}
       {$this pause_if_local})
    (exit)
    (SELECT_MSG
       {switch {$component selected_sym}
-         (os_write
-            {do INIT_DTA_WRITER})
+         ; (os_write
+         ;    {do INIT_DTA_WRITER})
 	      (os_mod
             {ui push_screen overshell_modifier_screen}
          )
@@ -32,6 +32,7 @@
             {ui goto_screen $modifier_exit}
             {ui goto_screen splash_screen}
          }
+         INIT_DTA_WRITER
          {ui pop_screen}
          {set $modifierpos 0}
       }
